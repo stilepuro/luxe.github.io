@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionHub Admin - Product Management</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Admin Sidebar -->
+        <div class="admin-sidebar">
+            <div class="admin-logo">
+                <h2>fashionhub</h2>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="admin-nav">
+                <a href="#dashboard" class="nav-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+                <a href="#products" class="nav-item">
+                    <i class="fas fa-box"></i>
+                    Products
+                </a>
+                <a href="#orders" class="nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    Orders
+                </a>
+                <a href="#customers" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    Customers
+                </a>
+                <a href="#analytics" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    Analytics
+                </a>
+                <a href="#settings" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </nav>
+        </div>
+
+        <!-- Admin Main Content -->
+        <div class="admin-main">
+            <div class="admin-header">
+                <h1>Dashboard</h1>
+                <div class="admin-actions">
+                    <button class="btn-primary" onclick="showAddProductModal()">
+                        <i class="fas fa-plus"></i>
+                        Add Product
+                    </button>
+                    <div class="admin-profile">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Stats -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Products</h3>
+                        <span class="stat-number">8</span>
+                        <span class="stat-change">+2 this week</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Revenue</h3>
+                        <span class="stat-number">$2,847</span>
+                        <span class="stat-change">+12% this month</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Customers</h3>
+                        <span class="stat-number">156</span>
+                        <span class="stat-change">+8 this week</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Orders</h3>
+                        <span class="stat-number">23</span>
+                        <span class="stat-change">+5 today</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="content-section">
+                <h2>Recent Orders</h2>
+                <div class="orders-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <tr>
+                                <td>#ORD-001</td>
+                                <td>John Doe</td>
+                                <td>Designer Blazer</td>
+                                <td>$299.99</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td>2025-10-28</td>
+                                <td>
+                                    <button class="btn-sm" onclick="viewOrder('ORD-001')">View</button>
+                                    <button class="btn-sm secondary" onclick="editOrder('ORD-001')">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-002</td>
+                                <td>Jane Smith</td>
+                                <td>Luxury Handbag</td>
+                                <td>$459.99</td>
+                                <td><span class="status processing">Processing</span></td>
+                                <td>2025-10-28</td>
+                                <td>
+                                    <button class="btn-sm" onclick="viewOrder('ORD-002')">View</button>
+                                    <button class="btn-sm secondary" onclick="editOrder('ORD-002')">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-grid">
+                    <div class="action-card" onclick="showAddProductModal()">
+                        <i class="fas fa-plus"></i>
+                        <h3>Add Product</h3>
+                        <p>Add a new product to your catalog</p>
+                    </div>
+                    <div class="action-card" onclick="exportData()">
+                        <i class="fas fa-download"></i>
+                        <h3>Export Data</h3>
+                        <p>Download sales and inventory reports</p>
+                    </div>
+                    <div class="action-card" onclick="viewAnalytics()">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>View Analytics</h3>
+                        <p>Check performance metrics</p>
+                    </div>
+                    <div class="action-card" onclick="manageInventory()">
+                        <i class="fas fa-boxes"></i>
+                        <h3>Inventory</h3>
+                        <p>Manage stock levels</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Product</h3>
+                <button class="close-modal" onclick="closeAddProductModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addProductForm">
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" id="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="productCategory" required>
+                            <option value="clothing">Clothing</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="shoes">Shoes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" id="productPrice" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="productDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Image</label>
+                        <input type="file" id="productImage" accept="image/*">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" onclick="closeAddProductModal()" class="btn-secondary">Cancel</button>
+                        <button type="submit" class="btn-primary">Add Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-app.js"></script>
+</body>
+</html>
