@@ -1,63 +1,235 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUXE - Luxury Fashion & Lifestyle</title>
+    <title>fashionhub - Fashion Blog & E-commerce</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Arial', sans-serif; 
-            background: linear-gradient(135deg, #000000, #1a1a1a);
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: "Helvetica", Arial, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; 
+            color: #333; 
+        }
+        .header { 
+            background: white; 
+            padding: 20px 0; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            z-index: 1000; 
         }
         .container { 
-            text-align: center; 
-            max-width: 600px; 
-            padding: 40px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
         }
-        h1 { 
-            font-size: 4rem; 
-            margin-bottom: 20px; 
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 15px; 
         }
-        .subtitle { 
+        .logo-icon { 
+            width: 50px; 
+            height: 50px; 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-weight: bold; 
             font-size: 1.5rem; 
-            margin-bottom: 30px; 
-            color: #cccccc; 
         }
-        .description { 
-            font-size: 1.1rem; 
+        .brand-name { 
+            font-size: 2.5rem; 
+            font-weight: 900; 
+            color: #333; 
+            text-transform: lowercase; 
+            letter-spacing: -1px; 
+        }
+        .tagline { 
+            color: #667eea; 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-top: 5px; 
+        }
+        .main { 
+            margin-top: 140px; 
+            padding: 60px 20px; 
+        }
+        .hero { 
+            text-align: center; 
+            background: white; 
+            padding: 80px 40px; 
+            border-radius: 25px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15); 
+            margin-bottom: 40px; 
+        }
+        .hero h1 { 
+            font-size: 4rem; 
+            font-weight: 300; 
+            color: #333; 
+            margin-bottom: 20px; 
+            text-transform: lowercase; 
+            letter-spacing: -2px; 
+        }
+        .hero-subtitle { 
+            font-size: 1.5rem; 
+            color: #667eea; 
+            font-weight: 600; 
+            margin-bottom: 40px; 
+            text-transform: lowercase; 
+        }
+        .hero p { 
+            font-size: 1.2rem; 
+            color: #666; 
+            margin-bottom: 50px; 
             line-height: 1.6; 
-            margin-bottom: 30px; 
-            color: #999999;
         }
-        .status { 
-            font-size: 1rem; 
-            color: #00ff88; 
-            margin-top: 20px; 
+        .features { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-top: 50px; 
+        }
+        .feature { 
+            background: linear-gradient(135deg, #f8f9ff, #e8f2ff); 
+            padding: 40px; 
+            border-radius: 20px; 
+            text-align: center; 
+            transition: all 0.3s ease; 
+            border: 2px solid transparent; 
+        }
+        .feature:hover { 
+            transform: translateY(-8px); 
+            border-color: #667eea; 
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2); 
+        }
+        .feature-icon { 
+            width: 90px; 
+            height: 90px; 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 0 auto 25px; 
+            font-size: 2.5rem; 
+            color: white; 
+        }
+        .feature h3 { 
+            font-size: 1.6rem; 
+            margin-bottom: 15px; 
+            color: #333; 
+            font-weight: 600; 
+            text-transform: lowercase; 
+        }
+        .feature p { 
+            color: #666; 
+            line-height: 1.6; 
+        }
+        .domain-section { 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            color: white; 
+            padding: 50px; 
+            border-radius: 25px; 
+            text-align: center; 
+            margin-top: 50px; 
+        }
+        .domain-section h3 { 
+            font-size: 2rem; 
+            margin-bottom: 30px; 
+            font-weight: 300; 
+        }
+        .domain-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 25px; 
+            flex-wrap: wrap; 
+            margin-top: 30px; 
+        }
+        .domain-link { 
+            background: rgba(255,255,255,0.15); 
+            padding: 18px 35px; 
+            border-radius: 30px; 
+            text-decoration: none; 
+            color: white; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+            border: 2px solid rgba(255,255,255,0.3); 
+        }
+        .domain-link:hover { 
+            background: rgba(255,255,255,0.25); 
+            transform: translateY(-3px); 
+        }
+        @media (max-width: 768px) { 
+            .hero h1 { font-size: 2.5rem; } 
+            .hero-subtitle { font-size: 1.2rem; } 
+            .features { grid-template-columns: 1fr; } 
+            .domain-links { flex-direction: column; align-items: center; } 
+            .brand-name { font-size: 2rem; } 
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>LUXE</h1>
-        <div class="subtitle">Luxury Fashion & Lifestyle</div>
-        <div class="description">
-            Benvenuti nel mondo del lusso e dell'eleganza. <br>
-            LUXE - Dove lo stile incontra l'eccellenza.
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">fh</div>
+                <div>
+                    <div class="brand-name">fashionhub</div>
+                    <div class="tagline">Fashion Hub - Your Style Destination</div>
+                </div>
+            </div>
         </div>
-        <div class="status">
-            ✅ LUXE.github.io configurato e attivo<br>
-            🕒 28/10/2025 06:11 UTC
+    </header>
+    
+    <main class="main">
+        <div class="container">
+            <div class="hero">
+                <h1>fashionhub</h1>
+                <div class="hero-subtitle">fashion hub</div>
+                <p>Your ultimate destination for fashion trends, style guides, and premium clothing. Discover the latest in fashion and shop curated collections that define contemporary style.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">👗</div>
+                        <h3>fashion blog</h3>
+                        <p>Expert style guides, trend forecasts, and fashion insights from industry professionals. Stay ahead with our curated fashion content.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">🛒</div>
+                        <h3>e-commerce</h3>
+                        <p>Shop our curated collection of premium fashion items. From casual to formal, we have everything you need for your perfect wardrobe.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">✨</div>
+                        <h3>style tips</h3>
+                        <p>Get personalized styling advice and outfit inspiration. Learn how to express your unique style with confidence.</p>
+                    </div>
+                </div>
+                
+                <div class="domain-section">
+                    <h3>fashion hub - your style destination</h3>
+                    <p>Centro della Moda in inglese = "Fashion Hub"</p>
+                    
+                    <div class="domain-links">
+                        <a href="https://fashionhub.github.io" class="domain-link">fashionhub.github.io</a>
+                        <a href="https://stilepuro.github.io/luxe.github.io" class="domain-link">github pages</a>
+                        <a href="https://github.com/stilepuro/luxe.github.io" class="domain-link">repository</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>
